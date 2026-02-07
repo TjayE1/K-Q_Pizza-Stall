@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>K&Q Pizza Stall | Fresh, Fast, Delicious</title>
+  <meta name="description" content="K&Q Pizza Stall by Kirungi Harriet Ouma. Pizza, cakes, hot dogs, burgers, kebabs, samosas, snacks, outside catering, custom cakes, cooking lessons, and food consultancy. Call now or WhatsApp to order." />
+  <style>
+    :root {
+      --primary: #e53935;
+      --primary-dark: #c62828;
+      --accent: #ffb300;
+      --text: #1c1c1c;
+      --muted: #6f6f6f;
+      --bg: #fff8f2;
+      --card: #ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --shadow-hover: 0 15px 40px rgba(0,0,0,0.15);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, #fef5f0 0%, #fff8f2 50%, #ffe8e0 100%);
+      line-height: 1.6;
+    }
+    .container {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 28px 3%;
+    }
+    header {
+      padding: 12px 0 8px;
+      position: relative;
+      z-index: 10;
+      background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,248,242,0.95));
+      border-bottom: 1px solid rgba(229,57,53,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo {
+      height: 50px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.08));
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .brand {
+      font-family: 'Georgia', 'Palatino', serif;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      font-size: 1.3rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 0;
+      line-height: 1.1;
+    }
+    .brand-tagline {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #fff3cd;
+      color: #856404;
+      font-weight: 700;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+    }
+    .header-badge.closed {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    
+    /* Hero Animations */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 40px 0 40px;
+      position: relative;
+      min-height: 550px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('IMAGES/Pizza_1.png') center/cover no-repeat;
+      background-attachment: fixed;
+      opacity: 0.55;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.5), rgba(229,57,53,0.35));
+      background-attachment: fixed;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .hero > div {
+      position: relative;
+      z-index: 1;
+    }
+    .hero > div:first-child {
+      animation: slideInLeft 0.6s ease-out;
+    }
+    .hero > div:last-child {
+      animation: fadeInScale 0.8s ease-out;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 7vw, 3.6rem);
+      line-height: 1.2;
+      margin: 0 0 16px;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      font-weight: 900;
+    }
+    .hero p {
+      color: #fff;
+      font-size: 1.1rem;
+      margin: 0 0 18px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      font-weight: 500;
+    }
+    
+    /* CTA Improvements */
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      border: none;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary { 
+      background: var(--primary); 
+      color: #fff;
+      font-size: 1.05rem;
+      padding: 14px 24px;
+    }
+    .btn-primary:hover { 
+      background: var(--primary-dark);
+      box-shadow: 0 8px 20px rgba(229, 57, 53, 0.3);
+    }
+    .btn-outline { 
+      background: #fff; 
+      border: 2px solid var(--primary); 
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+    .btn-outline:hover {
+      background: #fff8f2;
+    }
+    .btn-accent { 
+      background: var(--accent); 
+      color: #1a1a1a;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+      font-size: 1.05rem;
+      padding: 14px 24px;
+      animation: whatsappBreath 8s ease-in-out infinite;
+    }
+    .btn-whatsapp:hover {
+      background: #1ebd59;
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+    }
+
+    section {
+      padding: 24px 0;
+    }
+    h2 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      margin: 0 0 10px;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .subtext { 
+      color: #fff;
+      margin: 0 0 18px;
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    
+    /* Card Improvements */
+    .card {
+      background: var(--card);
+      padding: 18px;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      border: 2px solid transparent;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+    .hero .card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+    }
+    .hero .card p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    .hero .card a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.2s ease;
+    }
+    .hero .card a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+    
+    /* Scroll-Triggered Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Food Showcase Cards */
+    .food-card {
+      overflow: hidden;
+    }
+    .food-card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      filter: contrast(0.95) brightness(0.98);
+    }
+    .food-card.active img {
+      filter: contrast(1) brightness(1);
+    }
+    .food-card:hover img {
+      transform: scale(1.05);
+    }
+    .food-card.featured {
+      grid-column: span 1;
+      border: 2px solid var(--accent);
+      box-shadow: 0 12px 35px rgba(255, 179, 0, 0.15);
+    }
+    .food-card.featured img {
+      transform: scale(1.02);
+    }
+    
+    /* Service Cards with Images */
+    .service-card {
+      position: relative;
+    }
+    .service-card::before {
+      content: '';
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      opacity: 0.1;
+      position: absolute;
+      top: 18px;
+      right: 18px;
+    }
+    .service-card.primary {
+      border: 2px solid var(--primary);
+      background: linear-gradient(135deg, #ffffff, #fff8f2);
+    }
+    .service-card:hover {
+      border-color: var(--primary);
+    }
+    .service-card img.service-icon {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 12px;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover img.service-icon {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    }
+    
+    .badge {
+      display: inline-block;
+      background: #ffe1e0;
+      color: var(--primary-dark);
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      animation: fadeIn 0.5s ease-out;
+    }
+    .badge.featured {
+      background: var(--accent);
+      color: #1a1a1a;
+    }
+    .badge.trust {
+      background: #e3f2fd;
+      color: #1565c0;
+    }
+    .urgency-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff6b6b, #e53935);
+      color: #fff;
+      font-weight: 900;
+      padding: 8px 14px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+      animation: urgencyPulse 2s ease-in-out infinite;
+      box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4);
+    }
+    @keyframes urgencyPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .stars {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .stars span:first-child {
+      color: #ffc107;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+    
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Enhanced List */
+    ul {
+      padding-left: 0;
+      margin: 0;
+      list-style: none;
+    }
+    ul li {
+      padding-left: 30px;
+      position: relative;
+      margin-bottom: 12px;
+      opacity: 0;
+      animation: fadeInUp 0.4s ease-out forwards;
+      color: var(--text);
+    }
+    ul li:nth-child(1) { animation-delay: 0.1s; }
+    ul li:nth-child(2) { animation-delay: 0.2s; }
+    ul li:nth-child(3) { animation-delay: 0.3s; }
+    ul li:nth-child(4) { animation-delay: 0.4s; }
+    ul li:nth-child(5) { animation-delay: 0.5s; }
+    ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+    
+    /* Why Choose Section - Make readable over parallax */
+    section:has(h2:contains('Why')) {
+      position: relative;
+      z-index: 5;
+      background: transparent;
+      margin: 0 auto;
+      padding: 40px 3% !important;
+    }
+    section:has(h2:contains('Why')) h2 {
+      color: #fff;
+      text-shadow: 0 3px 8px rgba(0, 0, 0, 0.4), 0 0 20px rgba(229, 57, 53, 0.6);
+      font-weight: 900;
+    }
+    section:has(h2:contains('Why')) .card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+    }
+    section:has(h2:contains('Why')) ul li {
+      color: #ffffff !important;
+      font-weight: 600 !important;
+      font-size: 1.05rem !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+      opacity: 1 !important;
+    }
+    section:has(h2:contains('Why')) ul li strong {
+      color: #ffffff !important;
+      font-weight: 700 !important;
+    }
+    section:has(h2:contains('Why')) ul li::before {
+      color: #ffffff !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    /* CTA Band Enhancements */
+    .cta-band {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-band::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+      animation: shimmer 3s ease-in-out infinite;
+    }
+    .cta-band h2 { margin: 0 0 8px; position: relative; z-index: 1; }
+    .cta-band p { margin: 0 0 14px; position: relative; z-index: 1; }
+    .cta-band .btn { 
+      background: #fff; 
+      color: var(--primary);
+      position: relative;
+      z-index: 1;
+    }
+    .cta-band .btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* Founder Section */
+    .founder-card {
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    footer {
+      background: #111;
+      color: #f1f1f1;
+      padding: 24px 0;
+      margin-top: 14px;
+    }
+    footer a { color: #f1f1f1; text-decoration: none; }
+
+    /* Animations */
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) translateY(-100%); }
+      100% { transform: translateX(100%) translateY(100%); }
+    }
+    @keyframes whatsappBreath {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    /* Accessibility: Respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero { grid-template-columns: 1.2fr 0.8fr; align-items: center; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .food-card.featured { grid-column: span 2; }
+    }
+    @media (min-width: 1024px) {
+      .grid { grid-template-columns: repeat(3, 1fr); }
+      .food-card.featured { grid-column: span 1; }
+    }
+  </style>
+  <main>
+    <!-- Static Navigation Bar -->
+    <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 20px; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px); padding: 15px 3%; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+      <h1 class="brand" style="margin: 0; font-size: 1.6rem; color: #fff; background: linear-gradient(135deg, #ffb300, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">K&Q PIZZA STALL</h1>
+      <div class="header-badge" id="statusBadge" style="margin: 0;">
+        ✓ Open Now • Call or WhatsApp
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="container hero" style="margin-top: 70px;">
+      <div>
+        <!-- <div class="urgency-badge">⚡ Limited Orders Today • Same-Day Delivery Available</div> -->
+        <!-- <div class="stars">
+          <span>★★★★★</span>
+          <span>4.9/5 (127+ happy customers)</span>
+        </div> -->
+        <h1>Hot off the grill, melty, and freshly made your next craving starts here.</h1>
+        <!-- <p><strong>✓ Fresh prepared today</strong> • <strong>✓ 20-min delivery</strong> • <strong>✓ Trusted since 2020</strong></p> -->
+        <p style="font-size:0.9rem; color:var(--muted); margin-top:8px;">Over 2,000+ orders served • 100% satisfaction guarantee</p>
+        <div class="cta-group">
+          <a class="btn btn-accent" href="tel:0772977934"> Order Food Now</a>
+          <a class="btn btn-whatsapp" href="https://wa.me/256702514089"> Order on WhatsApp (Fast Reply)</a>
+          <a class="btn btn-primary" href="tel:0773267847"> Call Now</a>
+          <a class="btn btn-outline" href="tel:0702514089"> Book Catering</a>
+        </div>
+      </div>
+      <div class="card">
+        <p>Pizza, cakes, hot dogs, burgers, kebabs, samosas, snacks, outside catering, custom cakes, cooking lessons, and food consultancy.</p>
+        <p><strong>Call:</strong> <a href="tel:0773267847">0773 267847</a> | <a href="tel:0772977934">0772 977934</a> | <a href="tel:0702514089">0702 514089</a></p>
+        <p><strong>Email:</strong> <a href="mailto:ahkirungi@gmail.com">ahkirungi@gmail.com</a></p>
+      </div>
+    </section>
+
+    <!-- Mouth-Watering Food Showcase -->
+    <section class="container">
+      <h2>What's Hot & Ready to Order</h2>
+      <p class="subtext">Fresh, hot, and made to make you hungry right now.</p>
+      <div class="grid">
+        <div class="card food-card featured reveal">
+          <span class="badge featured">⭐ Most Ordered</span>
+          <img src="IMAGES/Pizza_1.png" alt="Hot cheesy pizza slices" />
+          <h3>Hot Melty Cheese Pizza</h3>
+          <p>Gooey, stretchy cheese. Golden crispy crust. Baked fresh and still warm—order yours now.</p>
+        </div>
+        <div class="card food-card reveal">
+          <img src="IMAGES/Burger_1.png" alt="Juicy flame-grilled burger" />
+          <h3>Juicy Flame-Grilled Burgers</h3>
+          <p>Thick grilled patty. Melted cheese. Crisp veggies. Hot off the grill and ready to bite.</p>
+        </div>
+        <div class="card food-card reveal">
+          <img src="IMAGES/Cake_1.png" alt="Freshly baked cake" />
+          <h3>Soft, Freshly Baked Cakes</h3>
+          <p>Moist layers. Smooth frosting. Baked today for celebrations or just because.</p>
+        </div>
+        <div class="card food-card reveal">
+          <img src="IMAGES/HotDog_1.png" alt="Hot dog" />
+          <h3>Classic Hot Dogs</h3>
+          <p>Plump, juicy, and loaded with your favorite toppings. Quick snack or full meal.</p>
+        </div>
+        <div class="card food-card reveal">
+          <img src="IMAGES/Food1.png" alt="Grilled kebabs" />
+          <h3>Smoky Grilled Kebabs</h3>
+          <p>Charred, smoky, packed with flavor. Freshly grilled and ready to enjoy.</p>
+        </div>
+        <div class="card food-card reveal">
+          <img src="IMAGES/Somosa1.png" alt="Crispy golden samosas" />
+          <h3>Crispy Golden Samosas</h3>
+          <p>Flaky outside, warm flavorful inside. The crunch you can hear across the room.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Offer -->
+    <section class="container">
+      <h2>Pick Your Craving</h2>
+      <p class="subtext">Fast service. Fresh taste. Hot and ready when you are.</p>
+      <div class="grid">
+        <div class="card service-card primary reveal">
+          <img src="IMAGES/Pizza_1.png" alt="Pizza" class="service-icon" />
+          <h3>Everyday Food Orders</h3>
+          <p>Hot pizza. Juicy burgers. Crispy samosas. Made fresh, delivered fast, priced to smile about.</p>
+        </div>
+        <div class="card service-card reveal">
+          <img src="IMAGES/Food1.png" alt="Catering" class="service-icon" />
+          <h3>Outside Catering</h3>
+          <p>Feed your guests delicious, reliable food. We handle everything you enjoy the party.</p>
+        </div>
+        <div class="card service-card reveal">
+          <img src="IMAGES/Cake_1.png" alt="Cake" class="service-icon" />
+          <h3>Custom Cakes</h3>
+          <p>Stunning designs. Soft, moist layers. Freshly baked for birthdays, weddings, or just because.</p>
+        </div>
+        <div class="card service-card reveal">
+          <img src="IMAGES/preparing_dough.png" alt="Cooking" class="service-icon" />
+          <h3>Cooking Lessons</h3>
+          <p>Learn crowd-pleasing recipes step-by-step from an experienced pro.</p>
+        </div>
+        <div class="card service-card reveal">
+          <img src="IMAGES/Burger_1.png" alt="Food Business" class="service-icon" />
+          <h3>Food Consultancy</h3>
+          <p>Smart advice for menus, kitchen flow, and running a successful food business.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose K&Q Pizza Stall -->
+    <section class="container">
+      <h2>Why K&Q Wins Customer Hearts</h2>
+      <div class=\"card\">
+        <ul>
+          <li><strong>Taste guarantee:</strong> Fresh ingredients, never frozen. Taste so good, you order again tomorrow.</li>
+          <li><strong>Speed you can trust:</strong> Hot food arrives in 20-25 minutes. Zero cold deliveries.</li>
+          <li><strong>Quality consistency:</strong> Same delicious taste every single order. No surprises, only satisfaction.</li>
+          <li><strong>Friendly service:</strong> Real people, real care. We remember your favorite order.</li>
+          <li><strong>Best value:</strong> Premium food, affordable pricing. No hidden charges.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Meet the Founder -->
+    <section class="container">
+      <h2>Meet the Founder</h2>
+      <div class="card founder-card">
+        <span class="badge trust"> 3+ Years Food Industry Experience</span>
+        <h3>Kirungi Harriet Ouma — Managing Director</h3>
+        <p>From kitchen dreams to 2,000+ satisfied customers. Kirungi brings passion, skill, and reliability to every order. She personally oversees quality and taste. When you order from K&Q, you're getting food from someone who genuinely cares.</p>
+        <p style="margin-top:10px; font-weight:600; color:var(--primary);">"Every customer is family. Every order deserves excellence."</p>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="container">
+      <div class="cta-band">
+        <h2>🔥 Order Now & Join 2,000+ Happy Customers</h2>
+        <p><strong>Same-day delivery • Fresh guaranteed • Money-back satisfaction guarantee</strong></p>
+        <p style="font-size:0.9rem; margin-top:6px;\">Limited slots available today. Call or WhatsApp now before we're fully booked.</p>
+        <div class="cta-group">
+          <a class="btn btn-whatsapp" href="https://wa.me/256702514089">💬 Order on WhatsApp (Fast Reply)</a>
+          <a class="btn" href="tel:0773267847">📞 Call 0773 267847</a>
+          <a class="btn" href="tel:0772977934">📞 Call 0772 977934</a>
+          <a class="btn" href="tel:0702514089">📞 Call 0702 514089</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>K&Q Pizza Stall</strong><br />
+      0773 267847 | 0772 977934 | 0702 514089<br />
+      <a href="mailto:ahkirungi@gmail.com">ahkirungi@gmail.com</a><br />
+      <small>© 2026 K&Q Pizza Stall. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll-triggered reveal animations using Intersection Observer
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Stagger animation slightly for cards in the same section
+          setTimeout(() => {
+            entry.target.classList.add('active');
+          }, index * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe all elements with reveal class
+    document.addEventListener('DOMContentLoaded', () => {
+      const revealElements = document.querySelectorAll('.reveal');
+      revealElements.forEach(el => observer.observe(el));
+
+      // Update open/closed status based on Uganda time (EAT: UTC+3)
+      updateBusinessStatus();
+      setInterval(updateBusinessStatus, 60000); // Update every minute
+    });
+
+    function updateBusinessStatus() {
+      // Get current time in Uganda (EAT = UTC+3)
+      const ugandaTime = new Date().toLocaleString('en-US', { timeZone: 'Africa/Kampala' });
+      const currentHour = new Date(ugandaTime).getHours();
+
+      const statusBadge = document.getElementById('statusBadge');
+      const isOpen = currentHour >= 9 && currentHour < 17; // 9 AM to 5 PM
+
+      if (isOpen) {
+        statusBadge.textContent = '✓ Open Now • Call or WhatsApp';
+        statusBadge.classList.remove('closed');
+      } else {
+        const nextOpenTime = currentHour < 9 ? '9:00 AM' : 'Tomorrow 9:00 AM';
+        statusBadge.textContent = `⏰ Closed • Opens ${nextOpenTime}`;
+        statusBadge.classList.add('closed');
+      }
+    }
+  </script>
+</body>
+</html>
